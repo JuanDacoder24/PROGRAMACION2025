@@ -4,7 +4,13 @@ public class Satelites extends Astros {
     private double orbitaPlanetaria;
     private String planetaAlQuePertenece;
     
-    public Satelites(double distanciaAlPlaneta, double orbitaPlanetaria, String planetaAlQuePertenece) {
+    public Satelites(double distanciaAlPlaneta, double orbitaPlanetaria, String planetaAlQuePertenece, double radioEcuatorial, double rotacionSobreEje,
+    double masa, double temperatura, double gravedad) {
+        this.radioEcuatorial = radioEcuatorial;
+        this.rotacionSobreEje = rotacionSobreEje;
+        this.masa = masa;
+        this.temperatura = temperatura;
+        this.gravedad = gravedad;
         this.distanciaAlPlaneta = distanciaAlPlaneta;
         this.orbitaPlanetaria = orbitaPlanetaria;
         this.planetaAlQuePertenece = planetaAlQuePertenece;

@@ -5,7 +5,6 @@ public abstract class Astros {
     protected double masa;
     protected double temperatura;
     protected double gravedad;
-
     
     public double getRadioEcuatorial() {
         return radioEcuatorial;

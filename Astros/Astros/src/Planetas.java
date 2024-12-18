@@ -4,7 +4,13 @@ public class Planetas extends Astros {
     private double orbitaAlSol;
     private boolean tieneSatelites;
     
-    public Planetas(double distanciaAlSol, double orbitaAlSol, boolean tieneSatelites) {
+    public Planetas(double distanciaAlSol, double orbitaAlSol, boolean tieneSatelites, double radioEcuatorial, double rotacionSobreEje,
+    double masa, double temperatura, double gravedad) {
+        this.radioEcuatorial = radioEcuatorial;
+        this.rotacionSobreEje = rotacionSobreEje;
+        this.masa = masa;
+        this.temperatura = temperatura;
+        this.gravedad = gravedad;
         this.distanciaAlSol = distanciaAlSol;
         this.orbitaAlSol = orbitaAlSol;
         this.tieneSatelites = tieneSatelites;
