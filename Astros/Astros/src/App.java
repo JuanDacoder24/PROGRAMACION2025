@@ -4,25 +4,40 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) throws Exception {
 
-    Astros [] sistemaSolar = new Astros[20];
+    Scanner teclado = new Scanner(System.in);
+    String opcion = "";
 
-    sistemaSolar [0] = new Planetas(143.234521, 45.390242, true, radioEcuatorial, rotacionSobreEje, masa, temperatura, gravedad);
+    Planetas p1 = new Planetas(143.234521, 45.390242, true, 123.12153, 12.301, 6.24 , -60, 38);
 
-    sistemaSolar [1] = new Satelites(121.654120, 32.234000, "Saturno");
+    Satelites s1 = new Satelites(234.346221, 31.478311, "Saturno", 111.12233, 10.435, 4.74 , -45, 42);
 
-    for (int i = 0; i < sistemaSolar.length; i++) {
-        if(sistemaSolar[i]!=null){
-            if(sistemaSolar[i] instanceof Planetas){
-                Planetas p1 = (Planetas)sistemaSolar[i];
+    do{
+        teclado = new Scanner (System.in);
+        System.out.println("Elige el tema que deseas ver: ");
+        System.out.println("1.- Planetas");
+        System.out.println("2.- Satelites");
+        System.out.println("3.- Salir");
+        opcion = teclado.nextLine();
+
+        switch (opcion) {
+            case "1":
                 System.out.println(p1);
-                
-            }else if(sistemaSolar[i] instanceof Satelites){
-                Satelites s1 = (Satelites)sistemaSolar[i];
-                System.out.println(s1);
-            }else 
-            System.out.println(sistemaSolar[i]);
-        }
-    }
+                break;
 
-    }
+            case "2":
+                System.out.println(s1);
+                break;
+
+            case "3":
+                System.out.println("Gracias por su visita");
+                break;
+
+            default:
+                System.out.println("Opcion no valida");
+                break;
+        }
+    }while (!opcion.equals("3"));
+
 }
+}
+
