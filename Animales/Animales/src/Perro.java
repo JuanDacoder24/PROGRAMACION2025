@@ -1,19 +1,22 @@
+
+import java.time.LocalDate;
+
 public class Perro extends Mascotas {
 
     private String raza;
-    private String pulgas;
+    private boolean pulgas;
 
-    public Perro(String nombre, int edad, String estado, String fechaNacimiento, String raza, String pulgas) {
+    public Perro(boolean pulgas, String raza, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
         super(nombre, edad, estado, fechaNacimiento);
-        this.raza = raza;
         this.pulgas = pulgas;
+        this.raza = raza;
     }
 
     public String getRaza() {
         return raza;
     }
 
-    public String getPulgas() {
+    public boolean  getPulgas() {
         return pulgas;
     }
 
@@ -21,7 +24,7 @@ public class Perro extends Mascotas {
         this.raza = raza;
     }
 
-    public void setPulgas(String pulgas) {
+    public void setPulgas(boolean pulgas) {
         this.pulgas = pulgas;
     }
     
@@ -41,5 +44,10 @@ public class Perro extends Mascotas {
     protected void habla() {
     }
 
+    @Override
+    public String toString() {
+        return "Perro [nombre=" + nombre + ", raza=" + raza + ", edad=" + edad + ", pulgas=" + pulgas + ", estado="
+                + estado + ", fechaNacimiento=" + fechaNacimiento + "]";
+    }
 
 }
