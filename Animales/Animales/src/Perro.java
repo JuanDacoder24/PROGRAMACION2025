@@ -4,9 +4,9 @@ import java.time.LocalDate;
 public class Perro extends Mascotas {
 
     private String raza;
-    private boolean pulgas;
+    private String pulgas;
 
-    public Perro(boolean pulgas, String raza, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Perro(String pulgas, String raza, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
         super(nombre, edad, estado, fechaNacimiento);
         this.pulgas = pulgas;
         this.raza = raza;
@@ -16,7 +16,7 @@ public class Perro extends Mascotas {
         return raza;
     }
 
-    public boolean  getPulgas() {
+    public String  getPulgas() {
         return pulgas;
     }
 
@@ -24,7 +24,7 @@ public class Perro extends Mascotas {
         this.raza = raza;
     }
 
-    public void setPulgas(boolean pulgas) {
+    public void setPulgas(String pulgas) {
         this.pulgas = pulgas;
     }
     

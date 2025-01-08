@@ -33,4 +33,10 @@ public class Loro extends Aves{
         return habla;
     }
 
+    @Override
+    public String toString() {
+        return "Loro [origen=" + origen + ", nombre=" + nombre + ", vuela=" + vuela + ", edad=" + edad + ", habla="
+                + habla + ", pico=" + pico + ", estado=" + estado + ", fechaNacimiento=" + fechaNacimiento + "]";
+    }
+
 }
