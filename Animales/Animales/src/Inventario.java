@@ -7,6 +7,6 @@ public class Inventario {
         System.out.println("***Bienvenido a la tienda de mascotas: TU AMIGO FIEL***");
         Scanner teclado = new Scanner(System.in);
 
-        Mascotas [] animales = new Mascotas[Perro,]
+        
     }
 }
