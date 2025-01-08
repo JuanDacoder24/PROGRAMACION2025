@@ -4,9 +4,9 @@ import java.time.LocalDate;
 public class Loro extends Aves{
 
     protected String origen;
-    protected boolean habla;
+    protected String habla;
 
-    public Loro(boolean habla, String origen, boolean pico, boolean vuela, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Loro(String habla, String origen, boolean pico, boolean vuela, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
         super(pico, vuela, nombre, edad, estado, fechaNacimiento);
         this.habla = habla;
         this.origen = origen;
@@ -29,7 +29,7 @@ public class Loro extends Aves{
         return origen;
     }
 
-    public boolean isHabla() {
+    public String isHabla() {
         return habla;
     }
 
