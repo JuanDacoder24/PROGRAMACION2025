@@ -1,14 +1,12 @@
 
-import java.time.LocalDate;
-
 public abstract class Mascotas {
 
     protected String nombre;
     protected int edad;
     protected String estado;
-    protected LocalDate fechaNacimiento;
+    protected String fechaNacimiento;
 
-    protected Mascotas(String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    protected Mascotas(String nombre, int edad, String estado, String fechaNacimiento) {
         this.nombre = nombre;
         this.edad = edad;
         this.estado = estado;
@@ -21,7 +19,7 @@ public abstract class Mascotas {
 
     protected abstract void morir();
 
-    protected abstract void habla();
+    protected abstract String habla();
 
     @Override
     public String toString() {

@@ -1,22 +1,21 @@
 
-import java.time.LocalDate;
 
 public abstract class Aves extends Mascotas{
 
-    protected boolean vuela;
-    protected boolean pico;
+    protected String vuela;
+    protected String pico;
 
-    public Aves(boolean pico, boolean vuela, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Aves(String pico, String vuela, String nombre, int edad, String estado, String fechaNacimiento) {
         super(nombre, edad, estado, fechaNacimiento);
         this.pico = pico;
         this.vuela = vuela;
     }
 
-    public boolean isVuela() {
+    public String isVuela() {
         return vuela;
     }
 
-    public boolean isPico() {
+    public String isPico() {
         return pico;
     }
 
@@ -33,7 +32,8 @@ public abstract class Aves extends Mascotas{
     }
 
     @Override
-    protected void habla() {
+    protected String habla() {
+        return "";
     }
 
 }

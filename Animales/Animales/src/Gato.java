@@ -1,12 +1,11 @@
 
-import java.time.LocalDate;
 
 public class Gato extends Mascotas {
 
     private String color;
     private String peloLargo;
 
-    public Gato(String color, String peloLargo, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Gato(String color, String peloLargo, String nombre, int edad, String estado, String fechaNacimiento) {
         super(nombre, edad, estado, fechaNacimiento);
         this.color = color;
         this.peloLargo = peloLargo;
@@ -41,7 +40,8 @@ public class Gato extends Mascotas {
     }
 
     @Override
-    protected void habla() {
+    protected String habla() {
+        return "Hola, soy un gato";
     }
 
     @Override

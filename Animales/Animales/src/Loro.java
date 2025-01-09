@@ -1,24 +1,23 @@
 
-import java.time.LocalDate;
 
 public class Loro extends Aves{
 
     protected String origen;
     protected String habla;
 
-    public Loro(String habla, String origen, boolean pico, boolean vuela, String nombre, int edad, String estado, LocalDate fechaNacimiento) {
+    public Loro(String habla, String origen, String pico, String vuela, String nombre, int edad, String estado, String fechaNacimiento) {
         super(pico, vuela, nombre, edad, estado, fechaNacimiento);
         this.habla = habla;
         this.origen = origen;
     }
 
-    @Override
-    protected void habla() {
-        super.habla();
+    protected String saluda(){
+       return "Hola soy un loro";
     }
+
     @Override
-    public boolean isVuela() {
-        return super.isVuela();
+    public String isVuela() {
+        return "Mira como vuelo";
     }
     @Override
     protected void muestra() {

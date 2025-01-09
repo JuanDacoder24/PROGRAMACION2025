@@ -1,25 +1,24 @@
 
-import java.time.LocalDate;
 
 public class Canario extends Aves {
 
     protected String color;
-    protected boolean canta;
+    protected String canta;
 
-    public Canario(boolean pico, boolean vuela, String nombre, int edad, String estado, LocalDate fechaNacimiento,
-            String color, boolean canta) {
+    public Canario(String pico, String vuela, String nombre, int edad, String estado, String fechaNacimiento,
+            String color, String canta) {
         super(pico, vuela, nombre, edad, estado, fechaNacimiento);
         this.color = color;
         this.canta = canta;
     }
 
     @Override
-    protected void habla() {
-        super.habla();
+    protected String habla() {
+        return "Hola, soy un canario";
     }
     @Override
-    public boolean isVuela() {
-        return super.isVuela();
+    public String isVuela() {
+        return "Mira, como vuelo";
     }
     @Override
     protected void muestra() {
@@ -34,11 +33,11 @@ public class Canario extends Aves {
         this.color = color;
     }
 
-    public boolean isCanta() {
+    public String isCanta() {
         return canta;
     }
 
-    public void setCanta(boolean canta) {
+    public void setCanta(String canta) {
         this.canta = canta;
     }
 
