@@ -1,5 +1,4 @@
 
-
 public abstract class Aves extends Mascotas{
 
     protected String vuela;

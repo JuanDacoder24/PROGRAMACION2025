@@ -1,5 +1,4 @@
 
-
 public class Loro extends Aves{
 
     protected String origen;

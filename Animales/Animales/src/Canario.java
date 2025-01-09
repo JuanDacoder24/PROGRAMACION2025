@@ -1,5 +1,4 @@
 
-
 public class Canario extends Aves {
 
     protected String color;
