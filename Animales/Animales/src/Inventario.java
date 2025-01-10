@@ -4,13 +4,14 @@ public class Inventario {
     public static void main(String[] args) throws Exception {
         
 
-        Mascotas [] animales = new Mascotas[30];
+        Mascotas [] animales = new Mascotas[5];
 
         animales [0] = new Perro("No tiene", "Pitbull", "Draco", 1, "Feliz", "09/01/2024");
         animales [1] = new Gato("No tiene", "Pelo largo", "Miguel", 2, "Feliz", "05/01/2023");
         animales [2] = new Loro("Si habla", "La selva del Peru", "Pico corto", "Si vuela", "Lorenzo", 3, "Feliz", "09/01/2022");
         animales [3] = new Canario("Pico largo", "No vuela", "Felso", 2, "Feliz", "07/01/2023", "Rojo y azul", "No canta");
-        String opcion = "";
+        String opcionPrincipal = "";
+        String opcionSecundaria = "";
         Scanner teclado = new Scanner(System.in);
 
         do { 
@@ -21,16 +22,45 @@ public class Inventario {
             System.out.println("4. Agregar mascota");
             System.out.println("6. Eliminar mascota");
             System.out.println("7. Vaciar el inventario");
-            opcion = teclado.nextLine();
-            switch (opcion) {
+            opcionPrincipal = teclado.nextLine();
+            switch (opcionPrincipal) {
                 
                 case "1":
-                break;        
                 
+                break;        
+        
                 case "2":
+                System.out.println("De que animal quieres informacion");
+                System.out.println("1. Perro");
+                System.out.println("2. Gato");
+                System.out.println("3. Loro");
+                System.out.println("4. Canario");
+                opcionSecundaria = teclado.nextLine();
+
+                switch (opcionSecundaria) {
+                    case "1":
+                        System.out.println(0);
+                        break;
+                    case "2":
+                        System.out.println(1);
+                        break;
+                    case "3":
+                        System.out.println(2);
+                        break;
+                    case "4":
+                        System.out.println(3);
+                        break;
+            
+                    default:
+                        System.out.println("Opcion no válida.");
+                        break;
+                }
                 break;
 
                 case "3":
+                    for(Mascotas m :animales){
+                        System.out.println(m);
+                    }
                 break;
 
                 case "4":
