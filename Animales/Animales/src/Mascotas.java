@@ -12,6 +12,27 @@ public abstract class Mascotas {
         this.estado = estado;
         this.fechaNacimiento = fechaNacimiento;
     }
+    
+
+    public String getNombre() {
+        return nombre;
+    }
+
+
+    public int getEdad() {
+        return edad;
+    }
+
+
+    public String getEstado() {
+        return estado;
+    }
+
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
 
     protected abstract void muestra();
 
@@ -20,6 +41,7 @@ public abstract class Mascotas {
     protected abstract void morir();
 
     protected abstract String habla();
+
 
     @Override
     public String toString() {
