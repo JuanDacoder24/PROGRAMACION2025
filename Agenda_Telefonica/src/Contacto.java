@@ -1,16 +1,11 @@
 public class Contacto {
 
     private String nombre;
-    private int telefono;
+    private String telefono;
 
-    public Contacto(String nombre, int telefono) {
+    public Contacto(String nombre, String telefono) {
         this.nombre = nombre;
         this.telefono = telefono;
-    }
-    
-    public Contacto(String nombre) {
-        this.nombre = nombre;
-        this.telefono = 0;
     }
 
     public String getNombre() {
@@ -21,22 +16,12 @@ public class Contacto {
         this.nombre = nombre;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
-    }
-
-    public boolean equals(Contacto c){
-        
-        if(this.nombre.trim().equalsIgnoreCase(c.getNombre().trim())){
-            return true;
-        }
-        
-        return false;
-        
     }
     
     @Override
