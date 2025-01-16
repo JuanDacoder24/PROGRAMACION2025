@@ -1,11 +1,11 @@
 public class Agenda {
 
-    Contacto [] contactos = new Contacto[10];
+    Contacto [] contactos;
 
     private int contador;
 
-    public Agenda(Contacto[] contactos) {
-        this.contactos = contactos;
+    public Agenda() {
+        this.contactos = new Contacto[10];
     }
     
     public boolean añadirContacto(Contacto c){
@@ -41,7 +41,9 @@ public class Agenda {
 
     public void listaContacto(){
         for (int i = 0; i < contador; i++) {
+            if(contactos[i] != null){
             System.out.println("Nombre: " + contactos[i].getNombre() + ", Teléfono: " + contactos[i].getTelefono());
+        }
         }
     }
 
