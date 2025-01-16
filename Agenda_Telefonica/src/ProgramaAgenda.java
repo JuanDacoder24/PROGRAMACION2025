@@ -7,6 +7,7 @@ public class ProgramaAgenda {
         Scanner teclado = new Scanner(System.in);
         String opcion = "";
         Agenda agenda = new Agenda();
+        System.out.println("***Agenda Telefonica***");
         do { 
             System.out.println("1. Añadir contacto");
             System.out.println("2. Eliminar contacto");
@@ -30,7 +31,13 @@ public class ProgramaAgenda {
                 break;
 
                 case "2":
-                    
+                System.out.print("Ingrese el nombre del contacto qie desea eliminar: ");
+                String contactoEliminado = teclado.nextLine();
+                if (agenda.eliminarContacto(contactoEliminado)) {
+                    System.out.println("Contacto eliminado exitosamente.");
+                } else {
+                    System.out.println("No se encontró el contacto.");
+                }
                 break;
 
                 case "3":
@@ -39,7 +46,14 @@ public class ProgramaAgenda {
                 break;
 
                 case "4":
-                    
+                System.out.print("Ingrese el nombre del contacto a buscar: ");
+                String nombreBuscar = teclado.nextLine();
+                int posicion = agenda.buscaContacto(nombreBuscar);
+                if (posicion != -1) {
+                    System.out.println("Contacto encontrado en la posición: " + posicion);
+                } else {
+                    System.out.println("No se encontró el contacto.");
+                }
                 break;
 
                 case "5":
@@ -48,7 +62,7 @@ public class ProgramaAgenda {
                 default:
                     System.out.println("Introduzca la alternativa correcta");
             }
-        } while (!opcion.equalsIgnoreCase("6"));
+        } while (!opcion.equalsIgnoreCase("5"));
 
     }
 }

@@ -28,9 +28,13 @@ public class Agenda {
     }
 
     public boolean eliminarContacto(String nombre){
-        if (nombre == null){
-            return false;
-            
+        for (int i = 0; i < contador; i++) {
+            if (contactos[i].getNombre().equalsIgnoreCase(nombre)) {
+                contactos[i] = contactos[contador - 1]; 
+                contactos[contador - 1] = null; 
+                contador--;
+                return true;
+            }
         }
         return false;
     }
@@ -47,7 +51,12 @@ public class Agenda {
         }
     }
 
-    public int buscaContacto(int nombre){
-        return nombre;
+    public int buscaContacto(String nombre){
+        for (int i = 0; i < contador; i++) {
+            if (contactos[i].getNombre().equalsIgnoreCase(nombre)) {
+                return i; 
+            }
+        }
+        return -1;
     }
 }
