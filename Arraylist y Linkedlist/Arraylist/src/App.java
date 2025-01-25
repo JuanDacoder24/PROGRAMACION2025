@@ -25,7 +25,7 @@ public class App {
         productos.add(p3);
         productos.add(p4);
         productos.add(p5);
-
+        System.out.println("-------------------------------------------");
         //creacion de iterator para visualizar 
         Iterator <Producto> itera = productos.iterator();
         Producto cadaProducto;
@@ -43,7 +43,7 @@ public class App {
             cadaProducto = itera.next();
             System.out.println(cadaProducto);
         }
-
+        System.out.println("-------------------------------------------");
         //Nuevo producto añadido 
         Producto nuevoProducto = new Producto("Zanahoria", 2);
         productos.add(2, nuevoProducto);
@@ -55,7 +55,7 @@ public class App {
             cadaProducto = itera.next();
             System.out.println(cadaProducto);
         }
-    
+        System.out.println("-------------------------------------------");
         //Ordenar con comparator
         Collections.sort(productos);
         System.out.println("Productos ordenados");
@@ -69,7 +69,7 @@ public class App {
 //---------------------------------------------------------
 
         //linkedlist
-
+        System.out.println("-------------------------------------------");
         //creacion de instancias
         Producto a1 = new Producto("Zapatillas", 21);
         Producto a2 = new Producto("Telefonos", 32);
@@ -86,7 +86,7 @@ public class App {
         articulos.add(a3);
         articulos.add(a4);
         articulos.add(a5);
-
+        System.out.println("-------------------------------------------");
         //creacion de iterator para visualizar 
         Iterator <Producto> iter = articulos.iterator();
         Producto cadaArticulo;
@@ -117,7 +117,7 @@ public class App {
             cadaArticulo = iter.next();
             System.out.println(cadaArticulo);
         }
-
+        System.out.println("-------------------------------------------");
          //Ordenar con comparator
          Collections.sort(articulos);
          System.out.println("Articulos ordenados");

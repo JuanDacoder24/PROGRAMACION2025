@@ -1,4 +1,3 @@
-import java.util.Objects;
 
 public class Producto implements Comparable<Producto>{
 
@@ -34,20 +33,6 @@ public class Producto implements Comparable<Producto>{
     @Override
     public int compareTo(Producto p) {
         return Integer.compare(this.cantidad, p.getCantidad());
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-    if (this == obj)
-        return true;
-    if (obj == null || getClass() != obj.getClass())
-        return false;
-    Producto producto = (Producto) obj;
-    return cantidad == producto.cantidad && Objects.equals(nombre, producto.nombre);
-}
-
-
-    
-    
+    }    
 
 }
