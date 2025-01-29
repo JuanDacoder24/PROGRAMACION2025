@@ -2,12 +2,10 @@ public class Coche {
 
     private String color;
     private String marca;
-    private String matricula;
     
-    public Coche(String color, String marca, String matricula) {
+    public Coche(String color, String marca) {
         this.color = color;
         this.marca = marca;
-        this.matricula = matricula;
     }
 
     public String getColor() {
@@ -18,10 +16,6 @@ public class Coche {
         return marca;
     }
 
-    public String getMatricula() {
-        return matricula;
-    }
-
     public void setColor(String color) {
         this.color = color;
     }
@@ -30,17 +24,12 @@ public class Coche {
         this.marca = marca;
     }
 
-    public void setMatricula(String matricula) {
-        this.matricula = matricula;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Coche{");
         sb.append("color=").append(color);
         sb.append(", marca=").append(marca);
-        sb.append(", matricula=").append(matricula);
         sb.append('}');
         return sb.toString();
     }
