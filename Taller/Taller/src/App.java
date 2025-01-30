@@ -38,6 +38,9 @@ public class App {
                     break;
 
                 case "3":
+                taller.visualizaMatriculas();
+                taller.visualizaCoches();
+                taller.visualizaTaller();
                 System.out.println("Cerrando programa");
                     break;
 
