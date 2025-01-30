@@ -5,18 +5,31 @@ public class Taller {
 
 
     int contador;
-    Map<String,Coche> coches = new HashMap<>();
+    Map<String,Coche> coches;
 
-    public void anadeElemento (){
-        String color, marca, matricula;
+    public Taller(){
+        this.coches = new HashMap<>();
+        this.contador = 0;
     }
 
-    public void eliminaElemento (){
-       
+    public void anadeElemento (String matricula, Coche coche){
+        this.coches.put(matricula, coche);
+        this.contador++;
     }
 
-    public void visualizaMatriculas (){
-        
+    public void eliminaElemento (String matricula){
+        if (this.coches.containsKey(matricula)) {
+            this.coches.remove(matricula);
+            this.contador--;
+        } else {
+            System.out.println("No se encontró un coche con la matrícula: " + matricula);
+        }
+    }
+
+    public void visualizaMatriculas (String matricula){
+        for (String m : coches.keySet()) {
+            System.out.println("Matriculas: " + m);
+        }
     }
 
     public void visualizaCoches (){

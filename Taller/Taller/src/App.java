@@ -6,7 +6,8 @@ public class App {
     public static void main(String[] args) throws Exception {
         
         Scanner teclado = new Scanner(System.in);
-        Taller taller;
+        Taller taller = new Taller();
+        String matricula, marca, color;
         String opcion = "";
 
         do { 
@@ -17,11 +18,23 @@ public class App {
             opcion = teclado.nextLine();
             switch (opcion) {
                 case "1":
-                System.out.println("Empieza poniendo la matricula del coche");
+                    do { 
+                        System.out.println("Empieza poniendo la matricula del coche");
+                        matricula = teclado.nextLine();
+                    } while (!setValidMatricula(matricula));
+                    System.out.println("Introduzca la marca del coche");
+                    marca = teclado.nextLine();
+                    System.out.println("Introduzca el color del coche");
+                    color = teclado.nextLine();
+                    taller.anadeElemento(matricula, new Coche(marca,color));
+                    System.out.println("**Coche añadido**");
                     break;
                 
                 case "2":
-                System.out.println("Debes colocar el numero de matricula");
+                System.out.println("Debes colocar el numero de matricula que deseas eliminar");
+                matricula = teclado.nextLine();
+                taller.eliminaElemento(matricula);
+                System.out.println("**Coche eliminado**");
                     break;
 
                 case "3":
