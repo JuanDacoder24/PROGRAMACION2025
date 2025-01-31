@@ -6,6 +6,44 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         Scanner teclado = new Scanner(System.in);
+        Contacto contacto;
+        Agenda agenda;
+        String opcion = "";
+
+        do { 
+            System.out.println("1. Añadir contacto");
+            System.out.println("2. Buscar contacto");
+            System.out.println("3. Eliminar contacto");
+            System.out.println("4. Visualiza contacto");
+            System.out.println("5. Numero de contactos de mi agenda");
+            System.out.println("6. Salir");
+            teclado = new Scanner(System.in);
+            opcion = teclado.nextLine();
+
+            switch (opcion) {
+                case "1":
+                    break;
+
+                case "2":
+                    break;
+
+                case "3":
+                    break;
+
+                case "4":
+                    break;
+
+                case "5":
+                    break;
+
+                case "6":
+                    break;
+
+                default:
+                System.out.println("Opcion incorrecta, intentelo de nuevo");
+            }
+
+        } while (!opcion.equals("6"));
     }
 
     public static boolean validNombre(String nombre) {

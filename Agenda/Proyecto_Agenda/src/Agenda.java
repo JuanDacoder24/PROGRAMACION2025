@@ -10,8 +10,8 @@ public class Agenda {
         this.contador = 0;
     }
 
-    public void anadeContacto (){
-
+    public boolean anadeContacto (String nombre, String telefono, String correo){
+        return false;
     }
 
     public void bucaContacto (){
