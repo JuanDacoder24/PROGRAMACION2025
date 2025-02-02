@@ -9,6 +9,7 @@ public class App {
         Contacto contacto;
         Agenda agenda;
         String opcion = "";
+        String nombre, telefono, correo;
 
         do { 
             System.out.println("1. Añadir contacto");
@@ -22,6 +23,22 @@ public class App {
 
             switch (opcion) {
                 case "1":
+                do { 
+                    System.out.println("Introduce el nombre del contacto");
+                    System.out.println("***¡Recuerda que la primera letra debe ser con mayuscula!***");
+                    nombre = teclado.nextLine();
+                } while (!validNombre(nombre));
+
+                do { 
+                    System.out.println("Introduce en numero");
+                    telefono = teclado.nextLine();
+                } while (!validTelefono(telefono));
+
+                do { 
+                    System.out.println("Introduce el correo electronico");
+                    correo = teclado.nextLine();
+                } while (!validCorreo(correo));
+
                     break;
 
                 case "2":

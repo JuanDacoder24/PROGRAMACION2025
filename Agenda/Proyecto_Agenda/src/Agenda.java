@@ -11,19 +11,38 @@ public class Agenda {
     }
 
     public boolean anadeContacto (String nombre, String telefono, String correo){
-        return false;
+        for (Contacto contacto : contactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                System.out.println("El contacto ya existe un contacto con el nombre " + nombre);
+                return false;
+            }
+        }
+        Contacto nuevoContacto = new Contacto(nombre, telefono, correo);
+        contactos.add(nuevoContacto);
+        System.out.println("Contacto añadido: " + nombre);
+        return true;
+    }
+    public void bucaContacto (String nombre){
+        for (Contacto contacto : contactos) {
+            if (contacto.getNombre().equals(nombre)) {
+                System.out.println(contacto.getNombre() + " " + contacto.getTelefono() + " ");
+            }
+        }
     }
 
-    public void bucaContacto (){
-
-    }
-
-    public void eliminaContacto (){
-
+    public boolean eliminaContacto (String nombre, String telefono, String correo){
+        Contacto contactoEliminado = new Contacto(nombre, telefono, correo);
+        return contactos.add(contactoEliminado);
     }
 
     public void visualizaAgenda (){
-
+        if (contactos.isEmpty()) {
+            System.out.println("No hay contactos en la agenda.");
+            return;
+        }
+        for (Contacto contacto : contactos) {
+            System.out.println("Nombre: " + contacto.getNombre() + ", Teléfono: " + contacto.getTelefono() + ", Correo: " + contacto.getCorreo());
+        }
     }
 
 }
