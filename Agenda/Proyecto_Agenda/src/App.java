@@ -56,16 +56,25 @@ public class App {
                 System.out.println("Escribe el nombre del contacto que deseas eliminar");
                 teclado = new Scanner(System.in);
                 nombre = teclado.nextLine();
-                agenda.eliminaContacto(nombre, telefono, correo);
+                if (agenda.eliminaContacto(nombre)){
+                    System.out.println("Contacto eliminado");
+                }else {
+                    System.out.println("Contacto no encontrado");
+                }
                     break;
 
                 case "4":
+                System.out.println("Estos son los contactos");
+                agenda.visualizaAgenda();
                     break;
 
                 case "5":
+                System.out.println("Estos son los numeros");
+                agenda.numContacto();
                     break;
 
                 case "6":
+                System.out.println("HASTA LUEGO");
                     break;
 
                 default:
@@ -93,18 +102,3 @@ public class App {
         return mat.matches(); 
     }
 }
-/*do { 
-    System.out.println("Introduce el nombre del contacto");
-    System.out.println("***¡Recuerda que la primera letra debe ser con mayuscula!***");
-    nombre = teclado.nextLine();
-} while (!validNombre(nombre));
-
-do { 
-    System.out.println("Introduce en numero");
-    telefono = teclado.nextLine();
-} while (!validTelefono(telefono));
-
-do { 
-    System.out.println("Introduce el correo electronico");
-    correo = teclado.nextLine();
-} while (!validCorreo(correo));*/

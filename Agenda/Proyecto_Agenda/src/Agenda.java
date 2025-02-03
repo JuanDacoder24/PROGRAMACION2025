@@ -32,9 +32,14 @@ public class Agenda {
         }
     }
 
-    public boolean eliminaContacto (String nombre, String telefono, String correo){
-        Contacto contactoEliminado = new Contacto(nombre, telefono, correo);
-        return contactos.remove(contactoEliminado);
+    public boolean eliminaContacto (String nombre){
+        for (Contacto contacto : contactos) {
+            if (contacto.getNombre().equalsIgnoreCase(nombre)) {
+                contactos.remove(contacto);
+                return true;
+            }
+        }
+        return false;
     }
 
     public void visualizaAgenda (){
@@ -45,6 +50,10 @@ public class Agenda {
         for (Contacto contacto : contactos) {
             System.out.println("Nombre: " + contacto.getNombre() + ", Teléfono: " + contacto.getTelefono() + ", Correo: " + contacto.getCorreo());
         }
+    }
+
+    public void numContacto(){
+        System.out.println(contactos.size());
     }
 
 }
