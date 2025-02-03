@@ -20,19 +20,21 @@ public class Agenda {
         Contacto nuevoContacto = new Contacto(nombre, telefono, correo);
         contactos.add(nuevoContacto);
         System.out.println("Contacto añadido: " + nombre);
+        contador ++;
         return true;
     }
+
     public void bucaContacto (String nombre){
         for (Contacto contacto : contactos) {
             if (contacto.getNombre().equals(nombre)) {
-                System.out.println(contacto.getNombre() + " " + contacto.getTelefono() + " ");
+                System.out.println(contacto.getNombre() + "---" + contacto.getTelefono() + "---" + contacto.getCorreo());
             }
         }
     }
 
     public boolean eliminaContacto (String nombre, String telefono, String correo){
         Contacto contactoEliminado = new Contacto(nombre, telefono, correo);
-        return contactos.add(contactoEliminado);
+        return contactos.remove(contactoEliminado);
     }
 
     public void visualizaAgenda (){

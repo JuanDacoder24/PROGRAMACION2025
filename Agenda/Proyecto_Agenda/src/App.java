@@ -7,11 +7,12 @@ public class App {
 
         Scanner teclado = new Scanner(System.in);
         Contacto contacto;
-        Agenda agenda;
+        Agenda agenda = new Agenda();
         String opcion = "";
         String nombre, telefono, correo;
 
         do { 
+            System.out.println("***AGENDA TELEFONICA***");
             System.out.println("1. Añadir contacto");
             System.out.println("2. Buscar contacto");
             System.out.println("3. Eliminar contacto");
@@ -26,25 +27,36 @@ public class App {
                 do { 
                     System.out.println("Introduce el nombre del contacto");
                     System.out.println("***¡Recuerda que la primera letra debe ser con mayuscula!***");
+                    teclado = new Scanner(System.in);
                     nombre = teclado.nextLine();
                 } while (!validNombre(nombre));
-
+                
                 do { 
                     System.out.println("Introduce en numero");
+                    teclado = new Scanner(System.in);
                     telefono = teclado.nextLine();
                 } while (!validTelefono(telefono));
-
+                
                 do { 
                     System.out.println("Introduce el correo electronico");
+                    teclado = new Scanner(System.in);
                     correo = teclado.nextLine();
                 } while (!validCorreo(correo));
-
+                agenda.anadeContacto(nombre, telefono, correo);
                     break;
 
                 case "2":
+                System.out.println("Inserta el nombre para buscar el contacto");
+                teclado = new Scanner(System.in);
+                nombre = teclado.nextLine();
+                agenda.bucaContacto(nombre);
                     break;
 
                 case "3":
+                System.out.println("Escribe el nombre del contacto que deseas eliminar");
+                teclado = new Scanner(System.in);
+                nombre = teclado.nextLine();
+                agenda.eliminaContacto(nombre, telefono, correo);
                     break;
 
                 case "4":
@@ -64,7 +76,7 @@ public class App {
     }
 
     public static boolean validNombre(String nombre) {
-        Pattern pat = Pattern.compile("[A-Z][a-zA-Z]");
+        Pattern pat = Pattern.compile("^[A-Z][a-zA-Z\\\\s]{2,14}$");
         Matcher mat = pat.matcher(nombre);
         return mat.matches();
     }
@@ -81,3 +93,18 @@ public class App {
         return mat.matches(); 
     }
 }
+/*do { 
+    System.out.println("Introduce el nombre del contacto");
+    System.out.println("***¡Recuerda que la primera letra debe ser con mayuscula!***");
+    nombre = teclado.nextLine();
+} while (!validNombre(nombre));
+
+do { 
+    System.out.println("Introduce en numero");
+    telefono = teclado.nextLine();
+} while (!validTelefono(telefono));
+
+do { 
+    System.out.println("Introduce el correo electronico");
+    correo = teclado.nextLine();
+} while (!validCorreo(correo));*/
