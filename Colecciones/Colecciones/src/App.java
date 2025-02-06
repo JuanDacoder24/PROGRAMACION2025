@@ -57,9 +57,20 @@ public class App {
             System.out.println("El array es pequeño");
         }
 
-        //ejercicio 4
-
-        teclado = new Scanner(System.in);
         
+    }
+    //ejercicio 4
+
+    Scanner teclado = new Scanner(System.in);
+    public void imprimePositivo(int p)throws PositivoException{
+        if(p<0){
+            throw new PositivoException(p);
+        }
+    }
+
+    public void imprimeNegativo(int n)throws NegativoException{
+        if(n>=0){
+            throw new NegativoException(n);
+        }
     }
 }
