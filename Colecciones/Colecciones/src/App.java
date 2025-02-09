@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -86,7 +87,59 @@ public class App {
 
         //ejercicio 5
 
+        try {
+            Gato gato1 = new Gato("Miau", 2);
+            gato1.toString();
+
+            Gato gato2 = new Gato("Leo", 3);
+            gato2.toString();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            Gato gato4 = new Gato("Felix", 4);
+            gato4.toString();
+            gato4.setEdad(-1); 
+            gato4.toString();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+
+        try {
+            Gato gato5 = new Gato("Tom", 5);
+            gato5.toString();
+            gato5.setNombre("To"); 
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
         
+        //ejercicio 6
+
+        ArrayList<Gato> listaGatos = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int conta = 0;
+
+        while (conta < 5) {
+            try {
+                System.out.print("Introduce el nombre del gato: ");
+                String nombre = scanner.nextLine();
+
+                System.out.print("Introduce la edad del gato: ");
+                int edad = Integer.parseInt(scanner.nextLine());
+
+                Gato gato = new Gato(nombre, edad);
+                listaGatos.add(gato);
+                conta++;
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage() + ". Intenta de nuevo.");
+            }
+        }
+
+        System.out.println("\nInformación de los gatos:");
+        for (Gato gato : listaGatos) {
+            gato.toString();
+        }
 
         
     }
