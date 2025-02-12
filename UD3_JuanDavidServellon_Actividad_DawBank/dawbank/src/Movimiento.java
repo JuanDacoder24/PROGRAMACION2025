@@ -1,17 +1,18 @@
 import java.time.LocalDateTime;
+
 public class Movimiento {
 
     private static int contador = 0;
     private int id;
-    private String fecha;
+    private LocalDateTime fecha;
     private String tipo;
     private double cantidad;
 
     public Movimiento (String tipo, double cantidad){
         this.contador++;
         this.id = id;
-        this.fecha = LocalDateTime.now().toString();
-        this.tipo = tipo; //ingreso o retirada
+        this.fecha = LocalDateTime.now();
+        this.tipo = tipo; 
         this.cantidad = 0.0;
 }
     public int getId() {
@@ -22,12 +23,8 @@ public class Movimiento {
         this.id = id;
     }
 
-    public String getFecha() {
+    public LocalDateTime getFecha() {
         return fecha;
-    }
-
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
     }
 
     public String getTipo() {
@@ -49,11 +46,11 @@ public class Movimiento {
             System.out.println("El valor de la cantidad tiene que ser positivo");
         }
     }
-
-    public String mostrarInfoMovimiento(){
-        String mostrarInfo = String.format("Movimiento - ID: %s, Fecha: %s, Tipo: %s, Cantidad: %s", 
-        this.id, this.fecha, this.tipo, this.cantidad);
-        return mostrarInfo;
+    @Override
+    public String toString() {
+        return "Movimiento [id=" + id + ", fecha=" + fecha + ", tipo=" + tipo + ", cantidad=" + cantidad + "]";
     }
+
+    
 
 }

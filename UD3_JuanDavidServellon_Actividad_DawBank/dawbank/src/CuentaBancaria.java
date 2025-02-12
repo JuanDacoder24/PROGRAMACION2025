@@ -1,21 +1,23 @@
 
+import java.util.LinkedList;
+
+
 public class CuentaBancaria {
 
     private String iban;
     private String titular;
     private double saldo;
-    private Movimiento [] movimientos;
-    private String validIban;
     private int nMovimientos;
     private int nElementosActuales;
+    LinkedList <Movimiento> movimientos = new LinkedList<>(); 
 
     public CuentaBancaria( String iban, String titular){
 
         this.iban = iban;
         this.titular = titular;
-        this.nMovimientos = 100;
+        this.nMovimientos = nMovimientos;
         this.nElementosActuales = 0;
-        this.movimientos = new Movimiento[nMovimientos];
+        this.movimientos = new LinkedList<>();
     }
 
     public String getIban() {
@@ -42,17 +44,9 @@ public class CuentaBancaria {
         if(saldo >=0.0)
         this.saldo = saldo;
     }
-    
-    public String getValidIban() {
-        return validIban;
-    }
 
-    public void registrarMovimiento(String tipo, double cantidad){
-        if(nElementosActuales >= 100){
-            System.out.println("No se pueden realizar mas movimientos.");
-        }else
-        movimientos[nElementosActuales] = new Movimiento(tipo,cantidad);
-        nElementosActuales++;
+    public void registrarMovimiento(Movimiento e){
+       movimientos.add(e);
     }
 
     public void ingresarMovimientos(double cantidad){
@@ -62,7 +56,7 @@ public class CuentaBancaria {
             System.out.println("AVISO: Notificar a hacienda.");
         }
         saldo += cantidad;
-        registrarMovimiento("Ingreso", cantidad);
+        registrarMovimiento(e);
     }
 
     public void retirarMovimientos(double cantidad){
@@ -72,7 +66,7 @@ public class CuentaBancaria {
             System.out.println("Retirada no permitida, verificar el saldo.");
         }
         saldo -= cantidad;
-        registrarMovimiento("Retirada", cantidad);
+        registrarMovimiento(e);
     }
 
     public void mostrarMovimiento(){
@@ -80,7 +74,7 @@ public class CuentaBancaria {
             System.out.println("No existen movimientos.");
         }
         for (int i = 0; i < nMovimientos; i++) {
-            System.out.println(movimientos[i].mostrarInfoMovimiento());
+            System.out.println(movimientos[i].toString());
         }
     }
 }
