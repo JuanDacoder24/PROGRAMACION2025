@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class DawBank {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args){
 
         Scanner teclado = new Scanner(System.in);
         System.out.println("***Bienvenido a TuBank***");
@@ -13,7 +13,8 @@ public class DawBank {
         }while (!setValidIban(iban));
 
         System.out.println("Ingresa nombre del titular");
-        String titular = teclado.nextLine();
+        Cliente titular = null;
+        teclado = new Scanner(System.in);
         CuentaBancaria cuenta = new CuentaBancaria(iban, titular);
         String opcion = "";
         teclado = new Scanner(System.in);
@@ -32,53 +33,61 @@ public class DawBank {
 
             switch (opcion) {
                 case "1":
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("Titular: " + cuenta.getTitular() +" | "+ "IBAN: " + cuenta.getIban() +" | "+ "Saldo: " + cuenta.getSaldo());
-                System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("Titular: " + cuenta.getTitular() +" | "+ "IBAN: " + cuenta.getIban() +" | "+ "Saldo: " + cuenta.getSaldo());
+                    System.out.println("------------------------------------------------------------------------------");
                     break;
 
                 case "2":
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("El numero del IBAN es: " + cuenta.getIban());
-                System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("El numero del IBAN es: " + cuenta.getIban());
+                    System.out.println("------------------------------------------------------------------------------");
                     break;
 
                 case "3":
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("El titular de la cuenta es: " + cuenta.getTitular());
-                System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("El titular de la cuenta es: " + cuenta.getTitular());
+                    System.out.println("------------------------------------------------------------------------------");
                     break;  
 
                 case "4":
-                System.out.println("------------------------------------------------------------------------------");
-                System.out.println("El saldo de la cuenta es: " + cuenta.getSaldo());
-                System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("------------------------------------------------------------------------------");
+                    System.out.println("El saldo de la cuenta es: " + cuenta.getSaldo());
+                    System.out.println("------------------------------------------------------------------------------");
                     break;
 
                 case "5":
-                    System.out.println("Escriba la cantidad que desee ingresar.");
-                    teclado = new Scanner(System.in);
-                    double cantidad = teclado.nextDouble();
-                    cuenta.ingresarMovimientos(cantidad);
+                    try {
+                        System.out.println("Escriba la cantidad que desee ingresar.");
+                        teclado = new Scanner(System.in);
+                        double cantidad = teclado.nextDouble();
+                        cuenta.ingresarMovimientos(cantidad);
+                    } catch (CuentaException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case "6":
-                System.out.println("Escriba la cantidad que desee retirar.");
-                teclado = new Scanner(System.in);
-                cantidad = teclado.nextDouble();
-                cuenta.ingresarMovimientos(cantidad);
+                    try {
+                        System.out.println("Escriba la cantidad que desee retirar.");
+                        teclado = new Scanner(System.in);
+                        double cantidad = teclado.nextDouble();
+                        cuenta.ingresarMovimientos(cantidad);
+                    } catch (CuentaException e) {
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case "7":
-                cuenta.mostrarMovimiento();
+                    cuenta.mostrarMovimiento();
                     break;
 
                 case "8":
-                System.out.println("Saliendo del programa, HASTA PRONTO");
+                    System.out.println("Saliendo del programa, HASTA PRONTO");
                     break;
 
                 default:
-                System.out.println("Introduzca la alternativa correcta");
+                    System.out.println("Introduzca la alternativa correcta");
             }
         } while (!opcion.equalsIgnoreCase("8"));
     }

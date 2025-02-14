@@ -5,18 +5,15 @@ import java.util.LinkedList;
 public class CuentaBancaria {
 
     private String iban;
-    private String titular;
+    private Cliente titular;
     private double saldo;
     private int nMovimientos;
-    private int nElementosActuales;
     LinkedList <Movimiento> movimientos = new LinkedList<>(); 
 
-    public CuentaBancaria( String iban, String titular){
-
+    public CuentaBancaria( String iban, Cliente titular){
         this.iban = iban;
         this.titular = titular;
         this.nMovimientos = nMovimientos;
-        this.nElementosActuales = 0;
         this.movimientos = new LinkedList<>();
     }
 
@@ -28,11 +25,11 @@ public class CuentaBancaria {
         this.iban = iban;
     }
 
-    public String getTitular() {
+    public Cliente getTitular() {
         return titular;
     }
 
-    public void setTitular(String titular) {
+    public void setTitular(Cliente titular) {
         this.titular = titular;
     }
 
@@ -45,18 +42,23 @@ public class CuentaBancaria {
         this.saldo = saldo;
     }
 
-    public void registrarMovimiento(Movimiento e){
-       movimientos.add(e);
+    public void registrarMovimiento(Movimiento r){
+       movimientos.add(r);
     }
 
-    public void ingresarMovimientos(double cantidad){
-        if(cantidad <= 0){
+    public void ingresarMovimientos(double cantidad) throws CuentaException {
+        try {
+            if(cantidad <= 0){
+            }
+            if(cantidad >= 3000){
+                System.out.println("AVISO: Notificar a hacienda.");
+            }
+            saldo += cantidad;
+            registrarMovimiento();
+
+        } catch (CuentaException c) {
+            System.out.println(c.getMessage());
         }
-        if(cantidad >= 3000){
-            System.out.println("AVISO: Notificar a hacienda.");
-        }
-        saldo += cantidad;
-        registrarMovimiento(e);
     }
 
     public void retirarMovimientos(double cantidad){
@@ -66,7 +68,7 @@ public class CuentaBancaria {
             System.out.println("Retirada no permitida, verificar el saldo.");
         }
         saldo -= cantidad;
-        registrarMovimiento(e);
+        registrarMovimiento();
     }
 
     public void mostrarMovimiento(){
@@ -74,7 +76,7 @@ public class CuentaBancaria {
             System.out.println("No existen movimientos.");
         }
         for (int i = 0; i < nMovimientos; i++) {
-            System.out.println(movimientos[i].toString());
+            System.out.println(movimientos.toString());
         }
     }
 }
