@@ -1,6 +1,6 @@
 public class AvisarHaciendaException extends Exception{
 
-    public AvisarHaciendaException (int a){
+    public AvisarHaciendaException (String mensaje) {
         super("Error en la operacion, avisaremos a hacienda");
     }
 }

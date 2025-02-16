@@ -1,9 +1,10 @@
+import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class DawBank {
     public static void main(String[] args){
-
+        
         Scanner teclado = new Scanner(System.in);
         System.out.println("***Bienvenido a TuBank***");
         String iban;
@@ -12,12 +13,37 @@ public class DawBank {
             iban = teclado.nextLine().toUpperCase();
         }while (!setValidIban(iban));
 
-        System.out.println("Ingresa nombre del titular");
-        Cliente titular = null;
-        teclado = new Scanner(System.in);
+        //ahora como he creado la clase persona-cliente, primero necesito guardar los datos del cliente y almacenarlos 
+        System.out.println("Ingresa nombre del titular:");
+        String nombre = teclado.nextLine();
+
+        System.out.println("Ingresa DNI del titular:");
+        String dni = teclado.nextLine();
+
+        System.out.println("Ingresa fecha de nacimiento (YYYY-MM-DD):");
+        LocalDate fechaNacimiento = null;
+        while (fechaNacimiento == null) {
+            try {
+                fechaNacimiento = LocalDate.parse(teclado.nextLine());
+            } catch (Exception e) {
+                System.out.println("Fecha inválida. Inténtalo nuevamente (Formato: YYYY-MM-DD):");
+            }
+        }
+
+        System.out.println("Ingresa teléfono del titular:");
+        String telefono = teclado.nextLine();
+
+        System.out.println("Ingresa email del titular:");
+        String email = teclado.nextLine();
+
+        System.out.println("Ingresa dirección del titular:");
+        String direccion = teclado.nextLine();
+
+        Cliente titular = new Cliente(nombre, dni, java.sql.Date.valueOf(fechaNacimiento), telefono, email, direccion);
+
         CuentaBancaria cuenta = new CuentaBancaria(iban, titular);
+
         String opcion = "";
-        teclado = new Scanner(System.in);
 
         do { 
             System.out.println("1 - Datos de la cuenta");
@@ -72,7 +98,7 @@ public class DawBank {
                         System.out.println("Escriba la cantidad que desee retirar.");
                         teclado = new Scanner(System.in);
                         double cantidad = teclado.nextDouble();
-                        cuenta.ingresarMovimientos(cantidad);
+                        cuenta.retirarMovimientos(cantidad);
                     } catch (CuentaException e) {
                         System.out.println(e.getMessage());
                     }
@@ -83,7 +109,7 @@ public class DawBank {
                     break;
 
                 case "8":
-                    System.out.println("Saliendo del programa, HASTA PRONTO");
+                    System.out.println("Saliendo del banco, HASTA PRONTO");
                     break;
 
                 default:

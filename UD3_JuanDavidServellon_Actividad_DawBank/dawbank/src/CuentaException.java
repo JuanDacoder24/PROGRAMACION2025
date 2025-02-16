@@ -1,6 +1,6 @@
 public class CuentaException extends Exception{
 
-    public CuentaException(int c) {
+    public CuentaException(String mensaje) {
         super("Error en la operacion");
     }
 }

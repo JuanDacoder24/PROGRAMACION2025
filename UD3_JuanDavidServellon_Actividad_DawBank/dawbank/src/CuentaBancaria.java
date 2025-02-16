@@ -47,36 +47,36 @@ public class CuentaBancaria {
     }
 
     public void ingresarMovimientos(double cantidad) throws CuentaException {
-        try {
-            if(cantidad <= 0){
-            }
-            if(cantidad >= 3000){
-                System.out.println("AVISO: Notificar a hacienda.");
-            }
-            saldo += cantidad;
-            registrarMovimiento();
-
-        } catch (CuentaException c) {
-            System.out.println(c.getMessage());
+        if (cantidad <= 0) {
+            throw new CuentaException("La cantidad debe ser mayor a 0.");
         }
+        if (cantidad >= 3000) {
+            System.out.println("AVISO: Notificar a hacienda.");
+        }
+    
+        saldo += cantidad;
+        registrarMovimiento(new Movimiento("Ingreso", cantidad)); 
     }
 
-    public void retirarMovimientos(double cantidad){
+    public void retirarMovimientos(double cantidad) throws CuentaException{
         if(cantidad <= 0){
+            throw new CuentaException("La cantidad debe ser mayor a 0.");
         }
         if(cantidad >= -50){
             System.out.println("Retirada no permitida, verificar el saldo.");
         }
         saldo -= cantidad;
-        registrarMovimiento();
+        registrarMovimiento(new Movimiento("Retiro", cantidad));
     }
 
     public void mostrarMovimiento(){
-        if(nMovimientos==0){
-            System.out.println("No existen movimientos.");
+        if (movimientos.isEmpty()) {
+            System.out.println("No hay movimientos registrados.");
+            return;
         }
-        for (int i = 0; i < nMovimientos; i++) {
-            System.out.println(movimientos.toString());
+
+        for (Movimiento movimiento : movimientos) {
+            movimiento.toString();
         }
     }
 }
