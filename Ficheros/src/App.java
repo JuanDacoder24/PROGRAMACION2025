@@ -1,11 +1,12 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
-
 
 public class App {
 
@@ -14,8 +15,13 @@ public class App {
         Scanner teclado = new Scanner (System.in);
         Producto producto;
         String opcion = "";
-        List<Producto> productos = new LinkedList<>();
+        String codigo;
+        String nombre;
+        int cantidad;
+        double precio;
 
+        List<Producto> productos = new LinkedList<>();
+        
         do { 
             System.out.println("1. Crear producto");
             System.out.println("2. Mostrar productos existentes");
@@ -27,7 +33,22 @@ public class App {
 
             switch (opcion) {
                 case "1":
-                
+                try (FileReader file1 = new FileReader("./resources/datos.csv"); BufferedReader reader = new BufferedReader(file1);) {
+                    String linea = reader.readLine();
+                    while(linea != null){
+                        
+                        String[] datos = linea.split(",");
+                        Producto p =  new Producto(datos[0], (datos[1]), Integer.parseInt(datos[2]), Double.parseDouble(datos[3]));
+
+                        productos.add(p);
+
+                        linea = reader.readLine();
+                    }
+
+                    
+                } catch (IOException e) {
+                    System.out.println(e.getMessage());
+                }
                     break;
 
                 case "2":
@@ -37,19 +58,8 @@ public class App {
                     break;
 
                 case "4":
-                try(FileWriter file = new FileWriter("./resources/Almacen.dat",true); BufferedWriter writer = new BufferedWriter(file);){
+                try(FileWriter file2 =  new FileWriter("./resources/Almacen.csv", false); BufferedWriter writer =  new BufferedWriter(file2);){
 
-                    writer.write("***Productos tecnologicos***");
-                    writer.newLine();
-                    writer.write("Laptop");
-                    writer.newLine();
-                    writer.write("Audifonos");
-                    writer.newLine();
-                    writer.write("SmartWatch");
-                    writer.newLine();
-                    writer.write("Celular");
-                    writer.newLine();
-        
                 }catch(IOException e){
                     System.out.println(e.getMessage());
                 }

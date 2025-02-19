@@ -2,7 +2,30 @@ import java.time.LocalDate;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+/**
+ * @author Juan David
+ * @version 1.0
+ */
+
+/**
+ * Clase principal que simula un sistema bancario simple.
+ * 
+ * <p>Esta clase permite a los usuarios interactuar con una cuenta bancaria, 
+ * incluyendo la creación de un cliente, la gestión de ingresos y retiros, 
+ * y la visualización de información de la cuenta.</p>
+ */
+
 public class DawBank {
+    /**
+     * Método principal que inicia la aplicación bancaria.
+     *
+     * <p>Este método solicita al usuario que ingrese información sobre el titular de la cuenta, 
+     * crea una cuenta bancaria y permite al usuario realizar diversas operaciones 
+     * como ingresar dinero, retirar dinero y mostrar movimientos.</p>
+     *
+     * @param args Argumentos de línea de comandos (no se utilizan en esta aplicación).
+     */
     public static void main(String[] args){
         
         Scanner teclado = new Scanner(System.in);
@@ -12,8 +35,7 @@ public class DawBank {
             System.out.println("Introduce una IBAN");
             iban = teclado.nextLine().toUpperCase();
         }while (!setValidIban(iban));
-
-        //ahora como he creado la clase persona-cliente, primero necesito guardar los datos del cliente y almacenarlos 
+ 
         System.out.println("Ingresa nombre del titular:");
         String nombre = teclado.nextLine();
 
@@ -118,6 +140,11 @@ public class DawBank {
         } while (!opcion.equalsIgnoreCase("8"));
     }
 
+    
+    /** 
+     * @param iban
+     * @return boolean
+     */
     public static boolean setValidIban(String iban) {
         Pattern pat = Pattern.compile("[A-Z]{2}[0-9]{22}");
         Matcher mat = pat.matcher(iban);
