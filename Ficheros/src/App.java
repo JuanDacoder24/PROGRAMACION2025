@@ -33,36 +33,37 @@ public class App {
 
             switch (opcion) {
                 case "1":
-                try (FileReader file1 = new FileReader("./resources/datos.csv"); BufferedReader reader = new BufferedReader(file1);) {
+                try (FileReader file1 = new FileReader("./resources/Almacen.csv"); BufferedReader reader = new BufferedReader(file1);) {
                     String linea = reader.readLine();
                     while(linea != null){
                         
                         String[] datos = linea.split(",");
                         Producto p =  new Producto(datos[0], (datos[1]), Integer.parseInt(datos[2]), Double.parseDouble(datos[3]));
-
                         productos.add(p);
-
                         linea = reader.readLine();
                     }
 
-                    
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
                 }
                     break;
 
                 case "2":
+                    System.out.println("Estos son los productos");
+                    for (Producto linea : productos) {
+                        System.out.println(linea);
+                    }
                     break;
 
                 case "3":
                     break;
 
                 case "4":
-                try(FileWriter file2 =  new FileWriter("./resources/Almacen.csv", false); BufferedWriter writer =  new BufferedWriter(file2);){
+                    try(FileWriter file2 =  new FileWriter("./resources/Almacen.csv", false); BufferedWriter writer =  new BufferedWriter(file2);){
 
-                }catch(IOException e){
-                    System.out.println(e.getMessage());
-                }
+                    }catch(IOException e){
+                        System.out.println(e.getMessage());
+                    }
                     break;
 
                 case "5":
