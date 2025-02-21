@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -20,7 +21,20 @@ public class App {
         int cantidad;
         double precio;
 
-        List<Producto> productos = new LinkedList<>();
+        LinkedList<Producto> productos = new LinkedList<>();
+        try (FileReader file1 = new FileReader("./resources/Almacen.csv"); BufferedReader reader = new BufferedReader(file1);) {
+            String linea = reader.readLine();
+            while(linea != null){
+                
+                String[] datos = linea.split(",");
+                Producto p =  new Producto(datos[0], (datos[1]), Integer.parseInt(datos[2]), Double.parseDouble(datos[3]));
+                productos.add(p);
+                linea = reader.readLine();
+            }
+
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         
         do { 
             System.out.println("1. Crear producto");
@@ -33,19 +47,21 @@ public class App {
 
             switch (opcion) {
                 case "1":
-                try (FileReader file1 = new FileReader("./resources/Almacen.csv"); BufferedReader reader = new BufferedReader(file1);) {
-                    String linea = reader.readLine();
-                    while(linea != null){
-                        
-                        String[] datos = linea.split(",");
-                        Producto p =  new Producto(datos[0], (datos[1]), Integer.parseInt(datos[2]), Double.parseDouble(datos[3]));
+                    try {
+                        System.out.println("Ingrese el codigo del producto");
+                        codigo = teclado.nextLine();
+                        System.out.println("Ingrese el nombre del producto");
+                        nombre = teclado.nextLine();
+                        System.out.println("Ingrese la cantidad del producto");
+                        cantidad = teclado.nextInt();
+                        System.out.println("Indique el precio del producto");
+                        precio = teclado.nextDouble();
+                        Producto p = new Producto(codigo, nombre, cantidad, precio);
                         productos.add(p);
-                        linea = reader.readLine();
+                   
+                    } catch (InputMismatchException e) {
+                        System.out.println("Haz introducido un punto, ingresa una coma");
                     }
-
-                } catch (IOException e) {
-                    System.out.println(e.getMessage());
-                }
                     break;
 
                 case "2":
@@ -56,6 +72,9 @@ public class App {
                     break;
 
                 case "3":
+                    System.out.println("Ingresa el codigo del producto");
+                    codigo = teclado.nextLine();
+                    productoEliminado(productos, codigo);
                     break;
 
                 case "4":
@@ -75,6 +94,15 @@ public class App {
             }
         } while (!opcion.equals("5"));
 
+    }
+
+    public static boolean productoEliminado (LinkedList productos, String codigo){
+        for (Producto eliminado : productos) {
+            if(eliminado.getCodigo().equals(codigo)){
+                System.out.println("El producto se ha eliminado correctamente");
+            }
+        }
+        return false;
     }
     
 }
